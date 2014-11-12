@@ -23,44 +23,44 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.0-b70, mixed mode)
 == Install Elasticsearch
 
 -------
-$brew install elasticsearch
---------
-* Start Elasticsearch
+  Install:
+    $brew install elasticsearch
 
--------
-  ES_INCLUDE=/usr/local/etc/elasticsearch/bin/elasticsearch.in.sh elasticsearch -f
+  Start:
+    ES_INCLUDE=/usr/local/etc/elasticsearch/bin/elasticsearch.in.sh elasticsearch -f
 -------
 
 == Install Kibana
 
 --------
-Downlad https://download.elasticsearch.org/kibana/kibana/kibana-3.1.1.zip
----------
+Downlad:
+        https://download.elasticsearch.org/kibana/kibana/kibana-3.1.1.zip
 
-. Start Kibana 
---------
-  Execute following command in the kibana directory
+Start Kibana:
+        Execute following command in the kibana directory
 
-  kibana-3.1.1]$python -m SimpleHTTPServer 8080
-  Serving HTTP on 0.0.0.0 port 8080 ...
+        kibana-3.1.1]$python -m SimpleHTTPServer 8080
+        Serving HTTP on 0.0.0.0 port 8080 ...
 --------
 
 == Install Fluentd
---------
-Downlad dmg from http://docs.fluentd.org/articles/install-by-dmg
----------
 
-# Start Fluent 
 --------
-Start: launchctl load /Library/LaunchDaemons/td-agent.plistsudo
-Stop: launchctl unload /Library/LaunchDaemons/td-agent.plist
+Downlad:
+        
+        dmg from http://docs.fluentd.org/articles/install-by-dmg
+
+Start/Stop:
+
+        Start: launchctl load /Library/LaunchDaemons/td-agent.plistsudo
+        Stop: launchctl unload /Library/LaunchDaemons/td-agent.plist
 --------
-# Configuration
+
+== Configure Fluent
+
 ------
 Edit /etc/td-agent/td-agent.conf and add the following to use logs created by application
-------
 
-------
 <match opal_log>
   type elasticsearch
   type_name opal_log
