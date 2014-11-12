@@ -18,46 +18,50 @@ $ java -version
 java version "1.8.0"
 Java(TM) SE Runtime Environment (build 1.8.0-b132)
 Java HotSpot(TM) 64-Bit Server VM (build 25.0-b70, mixed mode)
-
+---------
 
 == Install Elasticsearch
 
 -------
 $brew install elasticsearch
--------
+--------
 
-=== Start Elasticsearch
+. Start Elasticsearch
+  
 -------
-ES_INCLUDE=/usr/local/etc/elasticsearch/bin/elasticsearch.in.sh elasticsearch -f
+  ES_INCLUDE=/usr/local/etc/elasticsearch/bin/elasticsearch.in.sh elasticsearch -f
 -------
 
 == Install Kibana
 
 --------
-downlad https://download.elasticsearch.org/kibana/kibana/kibana-3.1.1.zip
+Downlad https://download.elasticsearch.org/kibana/kibana/kibana-3.1.1.zip
 ---------
-=== Start Kibana by executing following command in the kibana directory
+
+. Start Kibana 
 --------
-kibana-3.1.1]$python -m SimpleHTTPServer 8080
-Serving HTTP on 0.0.0.0 port 8080 ...
+  Execute following command in the kibana directory
+
+  kibana-3.1.1]$python -m SimpleHTTPServer 8080
+  Serving HTTP on 0.0.0.0 port 8080 ...
 --------
 
 == Install Fluentd
--------
- Downlad dmg from http://docs.fluentd.org/articles/install-by-dmg
--------
+--------
+Downlad dmg from http://docs.fluentd.org/articles/install-by-dmg
+---------
 
-=== Start Fluent
-
--------------
-Start: launchctl load /Library/LaunchDaemons/td-agent.plistsudo 
+# Start Fluent 
+--------
+Start: launchctl load /Library/LaunchDaemons/td-agent.plistsudo
 Stop: launchctl unload /Library/LaunchDaemons/td-agent.plist
--------------
-
-=== Configuration
-------------
+--------
+# Configuration
+------
 Edit /etc/td-agent/td-agent.conf and add the following to use logs created by application
+------
 
+------
 <match opal_log>
   type elasticsearch
   type_name opal_log
@@ -83,9 +87,11 @@ Edit /etc/td-agent/td-agent.conf and add the following to use logs created by ap
   pos_file /var/log/td-agent/opal_ctrl.pos
   #format /(?<ctrl_type>[aA-zZ]+)\: (?<value>.*)$/
   format ltsv
-  types numReaders:integer,numMappers:integer,bytesOut:integer,rejectedRecords:integer,batchStart:integer,numThreads:integer,numWriters:integer,bytesIn:integer,recordsInCount:integer,recordsOutCount:integer,batchStop:integer
+  types numReaders:integer,numMappers:integer,bytesOut:integer,rejectedRecords:integer,batchStart:integer,
+  numThreads:integer,numWriters:integer,bytesIn:integer,recordsInCount:integer,recordsOutCount:integer,
+  batchStop:integer
 </source>
------------------
+-----
 
 == Install Elastic Search Plugin
 
@@ -95,6 +101,4 @@ sudo /opt/td-agent/embedded/bin/fluent-gem install fluent-plugin-elasticsearch
 
 == Verify
 
-
 Any changes in the Log file will be automatically detected by the Fluent and log data will be loaded to Elastic search
-
