@@ -60,7 +60,8 @@ Start/Stop:
 
 ------
 Edit /etc/td-agent/td-agent.conf and add the following to use logs created by application
-
+------
+```
 <match opal_log>
   type elasticsearch
   type_name opal_log
@@ -90,7 +91,7 @@ Edit /etc/td-agent/td-agent.conf and add the following to use logs created by ap
   numThreads:integer,numWriters:integer,bytesIn:integer,recordsInCount:integer,recordsOutCount:integer,
   batchStop:integer
 </source>
------
+```
 
 == Install Elastic Search Plugin
 
