@@ -25,8 +25,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.0-b70, mixed mode)
 -------
 $brew install elasticsearch
 --------
-
-# Start Elasticsearch
+* Start Elasticsearch
 
 -------
   ES_INCLUDE=/usr/local/etc/elasticsearch/bin/elasticsearch.in.sh elasticsearch -f
